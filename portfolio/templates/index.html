@@ -403,7 +403,7 @@
               <!-- Resume Subpage -->
               <section data-id="resume" class="animated-section">
                 <div class="page-title">
-                  <h2>Resume</h2>
+                  <h2>Резюме</h2>
                 </div>
 
                 <div class="section-content">
@@ -412,77 +412,45 @@
                     <div class="col-xs-12 col-sm-7">
 
                       <div class="block-title">
-                        <h3>Education</h3>
+                        <h3>Обучение</h3>
                       </div>
                       
                       <div class="timeline timeline-second-style clearfix">
+                        {% for item in education %}
                         <div class="timeline-item clearfix">
                           <div class="left-part">
-                            <h5 class="item-period">2008</h5>
-                            <span class="item-company">University of Studies</span>
+                            <h5 class="item-period">{{ item.year }}</h5>
+                            <span class="item-company">{{ item.educational_institution }}</span>
                           </div>
                           <div class="divider"></div>
                           <div class="right-part">
-                            <h4 class="item-title">Frontend Development</h4>
-                            <p>Maecenas finibus nec sem ut imperdiet. Ut tincidunt est ac dolor aliquam sodales. Phasellus sed mauris hendrerit, laoreet sem in, lobortis ante.</p>
+                            <h4 class="item-title">{{ item.faculty }}</h4>
+                            <p>{{ item.description }}</p>
                           </div>
                         </div>
-
-                        <div class="timeline-item clearfix">
-                          <div class="left-part">
-                            <h5 class="item-period">2007</h5>
-                            <span class="item-company">University of Studies</span>
-                          </div>
-                          <div class="divider"></div>
-                          <div class="right-part">
-                            <h4 class="item-title">Graphic Design</h4>
-                            <p>Aliquam tincidunt malesuada tortor vitae iaculis. In eu turpis iaculis, feugiat risus quis, aliquet urna. Quisque fringilla mollis risus, eu pulvinar dolor.</p>
-                          </div>
-                        </div>
+                        {% endfor %}
                       </div>
 
                       <div class="white-space-50"></div>
 
                       <div class="block-title">
-                        <h3>Experience</h3>
+                        <h3>Опыт работы</h3>
                       </div>
 
                       <div class="timeline timeline-second-style clearfix">
+                        {% for item in experience %}
                         <div class="timeline-item clearfix">
                           <div class="left-part">
-                            <h5 class="item-period">2016 - Current</h5>
-                            <span class="item-company">Google</span>
+                            <h5 class="item-period">{{ item.date_of_beginning }} - {{ item.end_date }}</h5>
+                            <span class="item-company">{{ item.place_of_work }}</span>
                           </div>
                           <div class="divider"></div>
                           <div class="right-part">
-                            <h4 class="item-title">Lead Ui/Ux Designer</h4>
-                            <p>Praesent dignissim sollicitudin justo, sed elementum quam lacinia quis. Phasellus eleifend tristique posuere. Sed vitae dui nec magna.</p>
+                            <h4 class="item-title">{{ item.profession }}</h4>
+                            <p>{{ item.description }}</p>
                           </div>
                         </div>
-
-                        <div class="timeline-item clearfix">
-                          <div class="left-part">
-                            <h5 class="item-period">2013 - 2016</h5>
-                            <span class="item-company">Adobe</span>
-                          </div>
-                          <div class="divider"></div>
-                          <div class="right-part">
-                            <h4 class="item-title">Senior Ui/Ux Designer</h4>
-                            <p>Maecenas tempus faucibus rutrum. Duis eu aliquam urna. Proin vitae nulla tristique, ornare felis id, congue libero. Nam volutpat euismod quam.</p>
-                          </div>
-                        </div>
-                        
-                        <div class="timeline-item clearfix">
-                          <div class="left-part">
-                            <h5 class="item-period">2011 - 2013</h5>
-                            <span class="item-company">Google</span>
-                          </div>
-                          <div class="divider"></div>
-                          <div class="right-part">
-                            <h4 class="item-title">Junior Ui/Ux Designer</h4>
-                            <p>Duis mollis nunc quis quam viverra venenatis. Nulla nulla arcu, congue vitae nunc ac, sodales ultricies diam. Nullam justo leo, tincidunt sit amet.</p>
-                          </div>
-                        </div>
+                        {% endfor %}
                       </div>
 
                     </div>
@@ -602,19 +570,13 @@
 
                       <!-- Knowledges -->
                       <div class="block-title">
-                        <h3>Knowledges</h3>
+                        <h3>Ключевые навыки</h3>
                       </div>
 
                       <ul class="knowledges">
-                        <li>Marketing</li>
-                        <li>Print</li>
-                        <li>Digital Design</li>
-                        <li>Social Media</li>
-                        <li>Time Management</li>
-                        <li>Communication</li>
-                        <li>Problem-Solving</li>
-                        <li>Social Networking</li>
-                        <li>Flexibility</li>
+                        {% for item in skills %}
+                          <li>{{ item.skill }}</li>
+                        {% endfor %}
                       </ul>
                       <!-- End of Knowledges -->
                     </div>
@@ -634,21 +596,22 @@
                   
                   <div class="row">
                     <!-- Certificate 1 -->
+                    {% for item in certificates %}
                     <div class="col-xs-12 col-sm-6">
                       <div class="certificate-item clearfix">
                         <div class="certi-logo">
-                          <img src="{% static 'img/clients/client-1.png' %}" alt="logo">
+                          <img src="/media/{{ item.image }}" alt="logo">
                         </div>
                         
                         <div class="certi-content">
                           <div class="certi-title">
-                            <h4>Psyhology of Intertnation Design</h4>
+                            <h4>{{ item.title }}</h4>
                           </div>
                           <div class="certi-id">
-                            <span>Membership ID: XXXX</span>
+                            <span>{{ item.description }}</span>
                           </div>
                           <div class="certi-date">
-                            <span>19 April 2018</span>
+                            <span>{{ item.date }}</span>
                           </div>
                           <div class="certi-company">
                             <span></span>
@@ -656,32 +619,9 @@
                         </div>
                       </div>
                     </div>
+                    {% endfor %}
                     <!-- End of Certificate 1 -->
 
-                    <!-- Certificate 2 -->
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="certificate-item clearfix">
-                        <div class="certi-logo">
-                          <img src="{% static 'img/clients/client-1.png' %}" alt="logo">
-                        </div>
-                        
-                        <div class="certi-content">
-                          <div class="certi-title">
-                            <h4>Psyhology of Intertnation Design</h4>
-                          </div>
-                          <div class="certi-id">
-                            <span>Membership ID: XXXX</span>
-                          </div>
-                          <div class="certi-date">
-                            <span>19 April 2018</span>
-                          </div>
-                          <div class="certi-company">
-                            <span></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End of Certificate 2 -->
 
                   </div>
                   <!-- End of Certificates -->
@@ -702,27 +642,6 @@
                       <!-- Portfolio Content -->
                       <div class="portfolio-content">
 
-                        <ul class="portfolio-filters">
-                          <li class="active">
-                            <a class="filter btn btn-sm btn-link" data-group="category_all">All</a>
-                          </li>
-                          <li>
-                            <a class="filter btn btn-sm btn-link" data-group="category_detailed">Detailed</a>
-                          </li>
-                          <li>
-                            <a class="filter btn btn-sm btn-link" data-group="category_mockups">Mockups</a>
-                          </li>
-                          <li>
-                            <a class="filter btn btn-sm btn-link" data-group="category_soundcloud">SoundCloud</a>
-                          </li>
-                          <li>
-                            <a class="filter btn btn-sm btn-link" data-group="category_vimeo-videos">Vimeo Videos</a>
-                          </li>
-                          <li>
-                            <a class="filter btn btn-sm btn-link" data-group="category_youtube-videos">YouTube Videos</a>
-                          </li>
-                        </ul>
-
                         <!-- Portfolio Grid -->
                         <div class="portfolio-grid three-columns">
                           
@@ -736,61 +655,6 @@
                             <h4 class="name">SoundCloud Audio</h4>
                             <span class="category">SoundCloud</span>
                           </figure>
-
-                          <figure class="item standard" data-groups='["category_all", "category_detailed"]'>
-                            <div class="portfolio-item-img">
-                              <img src="{% static 'img/portfolio/2.jpg' %}" alt="Media Project 2" title="" />
-                              <a href="portfolio-1.html" class="ajax-page-load"></a>
-                            </div>
-
-                            <i class="far fa-file-alt"></i>
-                            <h4 class="name">Detailed Project 2</h4>
-                            <span class="category">Detailed</span>
-                          </figure>
-
-                          <figure class="item lbvideo" data-groups='["category_all", "category_vimeo-videos"]'>
-                            <div class="portfolio-item-img">
-                              <img src="{% static 'img/portfolio/3.jpg' %}" alt="Vimeo Video 1" title="" />
-                              <a href="https://player.vimeo.com/video/158284739" class="lightbox mfp-iframe" title="Vimeo Video 1"></a>
-                            </div>
-
-                            <i class="fas fa-video"></i>
-                            <h4 class="name">Vimeo Video 1</h4>
-                            <span class="category">Vimeo Videos</span>
-                          </figure>
-
-                          <figure class="item standard" data-groups='["category_all", "category_detailed"]'>
-                            <div class="portfolio-item-img">
-                              <img src="{% static 'img/portfolio/4.jpg' %}" alt="Media Project 1" title="" />
-                              <a href="portfolio-1.html" class="ajax-page-load"></a>
-                            </div>
-
-                            <i class="far fa-file-alt"></i>
-                            <h4 class="name">Detailed Project 1</h4>
-                            <span class="category">Detailed</span>
-                          </figure>
-
-                          <figure class="item lbimage" data-groups='["category_all", "category_mockups"]'>
-                            <div class="portfolio-item-img">
-                              <img src="{% static 'img/portfolio/5.jpg' %}" alt="Mockup Design 1" title="" />
-                              <a class="lightbox" title="Mockup Design 1" href="img/portfolio/full/5.jpg"></a>
-                            </div>
-
-                            <i class="far fa-image"></i>
-                            <h4 class="name">Mockup Design 1</h4>
-                            <span class="category">Mockups</span>
-                          </figure>
-
-                          <figure class="item lbvideo" data-groups='["category_all", "category_youtube-videos"]'>
-                            <div class="portfolio-item-img">
-                              <img src="{% static 'img/portfolio/6.jpg' %}" alt="YouTube Video 1" title="" />
-                              <a href="https://www.youtube.com/embed/bg0gv2YpIok" class="lightbox mfp-iframe" title="YouTube Video 1"></a>
-                            </div>
-
-                            <i class="fas fa-video"></i>
-                            <h4 class="name">YouTube Video 1</h4>
-                            <span class="category">YouTube Videos</span>
-                          </figure>
                         </div>
                       </div>
                       <!-- End of Portfolio Content -->
@@ -803,7 +667,7 @@
               <!-- Blog Subpage -->
               <section data-id="blog" class="animated-section">
                 <div class="page-title">
-                  <h2>Blog</h2>
+                  <h2>Блог</h2>
                 </div>
 
                 <div class="section-content">
@@ -882,13 +746,13 @@
 
                     <!-- Contact Form -->
                     <div class="col-xs-12 col-sm-8">
-                      <div id="map" class="map"></div>
+                      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A834d0699396a7b48184080f9c3cba9affb5fcb0c920d3cc45b88a6d00cb09ce2&amp;source=constructor" width="750" height="240" frameborder="0"></iframe>
                       <div class="block-title">
                         <h3>How Can I <span>Help You?</span></h3>
                       </div>
 
-                      <form id="contact_form" class="contact-form" action="https://lmpixels.com/demo/breezycv/darkfw/1/contact_form/contact_form.php" method="post">
-
+                      <form id="form" class="contact-form" action="{% url 'contact' %}" method="POST">
+                      {% csrf_token %}
                         <div class="messages"></div>
 
                         <div class="controls two-columns">
@@ -925,9 +789,9 @@
                             </div>
                           </div>
 
-                          <div class="g-recaptcha" data-sitekey="6LdqmCAUAAAAAMMNEZvn6g4W5e0or2sZmAVpxVqI" data-theme="dark"></div>
+<!--                          <div class="g-recaptcha" data-sitekey="6LdqmCAUAAAAAMMNEZvn6g4W5e0or2sZmAVpxVqI" data-theme="dark"></div>-->
       
-                          <input type="submit" class="button btn-send" value="Send message">
+                          <input type="submit" class="button btn-send" value="Send message" name="enter">
                         </div>
                       </form>
                     </div>
